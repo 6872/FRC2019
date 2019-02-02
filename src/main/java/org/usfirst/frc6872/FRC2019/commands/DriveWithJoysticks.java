@@ -44,11 +44,10 @@ public class DriveWithJoysticks extends Command {
     @Override
     protected void execute() {
         var joy = Robot.oi.joystick;
-        double multiplier = joy.getZ();
+        double multiplier = joy.getThrottle();
         double y = joy.getY() * multiplier;
         double x = joy.getX();
-        double z = joy.getTwist();
-        Robot.driveTrain.driveCartesian(y, x, z);
+        Robot.driveTrain.drive(y, x);
     }
 
     // Make this return true when this Command no longer needs to run execute()

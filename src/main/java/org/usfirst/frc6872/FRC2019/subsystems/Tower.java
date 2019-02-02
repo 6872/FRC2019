@@ -83,7 +83,7 @@ public class Tower extends PIDSubsystem {
         addChild("Potentiometer",potentiometer);
         
         
-        solenoid = new DoubleSolenoid(2, 1);
+        solenoid = new DoubleSolenoid(0, 2, 1);
         addChild("Solenoid",solenoid);
         
         

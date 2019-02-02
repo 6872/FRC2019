@@ -5,112 +5,144 @@ Children:
 - Children:
   - Children:
     - Children:
-      - Children: []
+      - Children:
+        - Children: []
+          Properties:
+            Type: !!robotbuilder.data.properties.ChoicesProperty
+              choices: &id001 [Victor, Jaguar, Talon, VictorSP, PWMTalonSRX, Spark,
+                SD540, PWMVictorSPX, DMC60]
+              default: Spark
+              name: Type
+              validators: null
+              value: VictorSP
+            Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
+              choices: &id002 ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
+                '11', '12', '13', '14', '15', '16', '17', '18', '19']
+              default: '0'
+              name: Output Channel (PWM)
+              validators: &id003 [PWMOutput]
+              value: '0'
+            Inverted: !!robotbuilder.data.properties.BooleanProperty {default: false,
+              name: Inverted, validators: null, value: false}
+          Base: Speed Controller
+          Name: Front Left
+        - Children: []
+          Properties:
+            Type: !!robotbuilder.data.properties.ChoicesProperty
+              choices: *id001
+              default: Spark
+              name: Type
+              validators: null
+              value: VictorSP
+            Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
+              choices: *id002
+              default: '0'
+              name: Output Channel (PWM)
+              validators: *id003
+              value: '2'
+            Inverted: !!robotbuilder.data.properties.BooleanProperty {default: false,
+              name: Inverted, validators: null, value: false}
+          Base: Speed Controller
+          Name: Rear Left
         Properties:
-          Type: !!robotbuilder.data.properties.ChoicesProperty
-            choices: &id001 [Victor, Jaguar, Talon, VictorSP, PWMTalonSRX, Spark,
-              SD540, PWMVictorSPX, DMC60]
-            default: Spark
-            name: Type
-            validators: null
-            value: VictorSP
-          Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
-            choices: &id002 ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
-              '11', '12', '13', '14', '15', '16', '17', '18', '19']
-            default: '0'
-            name: Output Channel (PWM)
-            validators: &id003 [PWMOutput]
-            value: '0'
-          Inverted: !!robotbuilder.data.properties.BooleanProperty {default: false,
-            name: Inverted, validators: null, value: false}
-        Base: Speed Controller
-        Name: Front Left
-      - Children: []
+          SpeedController4: !!robotbuilder.data.properties.ChildSelectionProperty {
+            default: null, name: SpeedController4, type: PIDOutput, validators: null,
+            value: null}
+          SpeedController3: !!robotbuilder.data.properties.ChildSelectionProperty {
+            default: null, name: SpeedController3, type: PIDOutput, validators: null,
+            value: null}
+          SpeedController2: !!robotbuilder.data.properties.ChildSelectionProperty
+            default: 1
+            name: SpeedController2
+            type: PIDOutput
+            validators: &id004 [SpeedControllerGroup, ChildDropdownSelected]
+            value: Rear Left
+          SpeedController1: !!robotbuilder.data.properties.ChildSelectionProperty
+            default: 0
+            name: SpeedController1
+            type: PIDOutput
+            validators: &id005 [SpeedControllerGroup, ChildDropdownSelected]
+            value: Front Left
+        Base: Speed Controller Group
+        Name: Left
+      - Children:
+        - Children: []
+          Properties:
+            Type: !!robotbuilder.data.properties.ChoicesProperty
+              choices: *id001
+              default: Spark
+              name: Type
+              validators: null
+              value: VictorSP
+            Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
+              choices: *id002
+              default: '0'
+              name: Output Channel (PWM)
+              validators: *id003
+              value: '1'
+            Inverted: !!robotbuilder.data.properties.BooleanProperty {default: false,
+              name: Inverted, validators: null, value: false}
+          Base: Speed Controller
+          Name: Front Right
+        - Children: []
+          Properties:
+            Type: !!robotbuilder.data.properties.ChoicesProperty
+              choices: *id001
+              default: Spark
+              name: Type
+              validators: null
+              value: PWMVictorSPX
+            Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
+              choices: *id002
+              default: '0'
+              name: Output Channel (PWM)
+              validators: *id003
+              value: '3'
+            Inverted: !!robotbuilder.data.properties.BooleanProperty {default: false,
+              name: Inverted, validators: null, value: false}
+          Base: Speed Controller
+          Name: Rear Right
         Properties:
-          Type: !!robotbuilder.data.properties.ChoicesProperty
-            choices: *id001
-            default: Spark
-            name: Type
-            validators: null
-            value: VictorSP
-          Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
-            choices: *id002
-            default: '0'
-            name: Output Channel (PWM)
-            validators: *id003
-            value: '1'
-          Inverted: !!robotbuilder.data.properties.BooleanProperty {default: false,
-            name: Inverted, validators: null, value: false}
-        Base: Speed Controller
-        Name: Front Right
-      - Children: []
-        Properties:
-          Type: !!robotbuilder.data.properties.ChoicesProperty
-            choices: *id001
-            default: Spark
-            name: Type
-            validators: null
-            value: VictorSP
-          Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
-            choices: *id002
-            default: '0'
-            name: Output Channel (PWM)
-            validators: *id003
-            value: '2'
-          Inverted: !!robotbuilder.data.properties.BooleanProperty {default: false,
-            name: Inverted, validators: null, value: false}
-        Base: Speed Controller
-        Name: Rear Left
-      - Children: []
-        Properties:
-          Type: !!robotbuilder.data.properties.ChoicesProperty
-            choices: *id001
-            default: Spark
-            name: Type
-            validators: null
-            value: PWMVictorSPX
-          Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
-            choices: *id002
-            default: '0'
-            name: Output Channel (PWM)
-            validators: *id003
-            value: '3'
-          Inverted: !!robotbuilder.data.properties.BooleanProperty {default: false,
-            name: Inverted, validators: null, value: false}
-        Base: Speed Controller
-        Name: Rear Right
+          SpeedController4: !!robotbuilder.data.properties.ChildSelectionProperty {
+            default: null, name: SpeedController4, type: PIDOutput, validators: null,
+            value: null}
+          SpeedController3: !!robotbuilder.data.properties.ChildSelectionProperty {
+            default: null, name: SpeedController3, type: PIDOutput, validators: null,
+            value: null}
+          SpeedController2: !!robotbuilder.data.properties.ChildSelectionProperty
+            default: 1
+            name: SpeedController2
+            type: PIDOutput
+            validators: *id004
+            value: Rear Right
+          SpeedController1: !!robotbuilder.data.properties.ChildSelectionProperty
+            default: 0
+            name: SpeedController1
+            type: PIDOutput
+            validators: *id005
+            value: Front Right
+        Base: Speed Controller Group
+        Name: Right
       Properties:
-        Right Rear Motor: !!robotbuilder.data.properties.ChildSelectionProperty
-          default: 3
-          name: Right Rear Motor
+        Right Motor: !!robotbuilder.data.properties.ChildSelectionProperty
+          default: 1
+          name: Right Motor
           type: PIDOutput
-          validators: [RobotDrive4, ChildDropdownSelected]
-          value: Rear Right
-        Right Front Motor: !!robotbuilder.data.properties.ChildSelectionProperty
-          default: 2
-          name: Right Front Motor
-          type: PIDOutput
-          validators: [RobotDrive4, ChildDropdownSelected]
-          value: Front Right
+          validators: [RobotDrive2, ChildDropdownSelected]
+          value: Right
         Maximum Output: !!robotbuilder.data.properties.DoubleProperty {default: 1,
           name: Maximum Output, validators: null, value: 1.0}
-        Left Rear Motor: !!robotbuilder.data.properties.ChildSelectionProperty
-          default: 1
-          name: Left Rear Motor
+        Left Motor: !!robotbuilder.data.properties.ChildSelectionProperty
+          default: 0
+          name: Left Motor
           type: PIDOutput
-          validators: [RobotDrive4, ChildDropdownSelected]
-          value: Rear Left
+          validators: [RobotDrive2, ChildDropdownSelected]
+          value: Left
         Safety Expiration Time: !!robotbuilder.data.properties.DoubleProperty {default: 0.1,
           name: Safety Expiration Time, validators: null, value: 0.1}
         Safety Enabled: !!robotbuilder.data.properties.BooleanProperty {default: true,
           name: Safety Enabled, validators: null, value: true}
-        Left Front Motor: !!robotbuilder.data.properties.ChildSelectionProperty
-          default: 0
-          name: Left Front Motor
-          type: PIDOutput
-          validators: [RobotDrive4, ChildDropdownSelected]
-          value: Front Left
-      Base: Mecanum Drive
+      Base: Differential Drive
       Name: Drive
     Properties:
       Send to SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: false,
@@ -314,13 +346,13 @@ Children:
           default: 1
           name: SpeedController2
           type: PIDOutput
-          validators: [SpeedControllerGroup, ChildDropdownSelected]
+          validators: *id004
           value: Speed Controller 2
         SpeedController1: !!robotbuilder.data.properties.ChildSelectionProperty
           default: 0
           name: SpeedController1
           type: PIDOutput
-          validators: [SpeedControllerGroup, ChildDropdownSelected]
+          validators: *id005
           value: Speed Controller 1
       Base: Speed Controller Group
       Name: Motors
@@ -356,7 +388,7 @@ Children:
           validators: null
           value: []
         Button: !!robotbuilder.data.properties.ChoicesProperty
-          choices: &id004 ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11',
+          choices: &id006 ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11',
             '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23',
             '24', '25', '26', '27', '28', '29', '30', '31', '32']
           default: '1'
@@ -367,10 +399,10 @@ Children:
           default: None
           name: Command
           type: Command
-          validators: &id005 [TypeDropdownSelected]
+          validators: &id007 [TypeDropdownSelected]
           value: Toggle Piston
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
-          choices: &id006 [whileHeld, whenPressed, whenReleased]
+          choices: &id008 [whileHeld, whenPressed, whenReleased]
           default: whileHeld
           name: When to Run
           validators: null
@@ -387,7 +419,7 @@ Children:
           validators: null
           value: []
         Button: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id004
+          choices: *id006
           default: '1'
           name: Button
           validators: null
@@ -396,10 +428,10 @@ Children:
           default: None
           name: Command
           type: Command
-          validators: *id005
+          validators: *id007
           value: Load Disk
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id006
+          choices: *id008
           default: whileHeld
           name: When to Run
           validators: null
@@ -418,7 +450,7 @@ Children:
           - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: setpoint,
             type: double, value: Tower.Ground}
         Button: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id004
+          choices: *id006
           default: '1'
           name: Button
           validators: null
@@ -427,10 +459,10 @@ Children:
           default: None
           name: Command
           type: Command
-          validators: *id005
+          validators: *id007
           value: Set Level
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id006
+          choices: *id008
           default: whileHeld
           name: When to Run
           validators: null
@@ -449,7 +481,7 @@ Children:
           - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: setpoint,
             type: double, value: Tower.Robot}
         Button: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id004
+          choices: *id006
           default: '1'
           name: Button
           validators: null
@@ -458,10 +490,10 @@ Children:
           default: None
           name: Command
           type: Command
-          validators: *id005
+          validators: *id007
           value: Set Level
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id006
+          choices: *id008
           default: whileHeld
           name: When to Run
           validators: null
@@ -480,7 +512,7 @@ Children:
           - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: setpoint,
             type: double, value: Tower.BallLoad}
         Button: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id004
+          choices: *id006
           default: '1'
           name: Button
           validators: null
@@ -489,10 +521,10 @@ Children:
           default: None
           name: Command
           type: Command
-          validators: *id005
+          validators: *id007
           value: Set Level
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id006
+          choices: *id008
           default: whileHeld
           name: When to Run
           validators: null
@@ -511,7 +543,7 @@ Children:
           - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: setpoint,
             type: double, value: Tower.Ball1}
         Button: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id004
+          choices: *id006
           default: '1'
           name: Button
           validators: null
@@ -520,10 +552,10 @@ Children:
           default: None
           name: Command
           type: Command
-          validators: *id005
+          validators: *id007
           value: Set Level
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id006
+          choices: *id008
           default: whileHeld
           name: When to Run
           validators: null
@@ -542,7 +574,7 @@ Children:
           - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: setpoint,
             type: double, value: Tower.Ball2}
         Button: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id004
+          choices: *id006
           default: '1'
           name: Button
           validators: null
@@ -551,10 +583,10 @@ Children:
           default: None
           name: Command
           type: Command
-          validators: *id005
+          validators: *id007
           value: Set Level
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id006
+          choices: *id008
           default: whileHeld
           name: When to Run
           validators: null
@@ -573,7 +605,7 @@ Children:
           - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: setpoint,
             type: double, value: Tower.Ball3}
         Button: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id004
+          choices: *id006
           default: '1'
           name: Button
           validators: null
@@ -582,10 +614,10 @@ Children:
           default: None
           name: Command
           type: Command
-          validators: *id005
+          validators: *id007
           value: Set Level
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id006
+          choices: *id008
           default: whileHeld
           name: When to Run
           validators: null
@@ -604,7 +636,7 @@ Children:
           - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: setpoint,
             type: double, value: Tower.DiskLoad}
         Button: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id004
+          choices: *id006
           default: '1'
           name: Button
           validators: null
@@ -613,10 +645,10 @@ Children:
           default: None
           name: Command
           type: Command
-          validators: *id005
+          validators: *id007
           value: Set Level
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id006
+          choices: *id008
           default: whileHeld
           name: When to Run
           validators: null
@@ -635,7 +667,7 @@ Children:
           - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: setpoint,
             type: double, value: Tower.Disk1}
         Button: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id004
+          choices: *id006
           default: '1'
           name: Button
           validators: null
@@ -644,10 +676,10 @@ Children:
           default: None
           name: Command
           type: Command
-          validators: *id005
+          validators: *id007
           value: Set Level
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id006
+          choices: *id008
           default: whileHeld
           name: When to Run
           validators: null
@@ -666,7 +698,7 @@ Children:
           - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: setpoint,
             type: double, value: Tower.Disk2}
         Button: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id004
+          choices: *id006
           default: '1'
           name: Button
           validators: null
@@ -675,10 +707,10 @@ Children:
           default: None
           name: Command
           type: Command
-          validators: *id005
+          validators: *id007
           value: Set Level
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id006
+          choices: *id008
           default: whileHeld
           name: When to Run
           validators: null
@@ -697,7 +729,7 @@ Children:
           - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: setpoint,
             type: double, value: Tower.Disk3}
         Button: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id004
+          choices: *id006
           default: '1'
           name: Button
           validators: null
@@ -706,10 +738,10 @@ Children:
           default: None
           name: Command
           type: Command
-          validators: *id005
+          validators: *id007
           value: Set Level
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id006
+          choices: *id008
           default: whileHeld
           name: When to Run
           validators: null
