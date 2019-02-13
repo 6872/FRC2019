@@ -136,7 +136,7 @@ public class Tower extends PIDSubsystem {
     */
         StringBuilder sb = new StringBuilder();
         int i = 0;
-        int min = 10000;
+        double min = 2000;
 		for (ArrayBlockingQueue queue : distance.arrayBlockingQueueList) {
 		    Object result = queue.poll();
 		    if (result != null) {
@@ -151,7 +151,7 @@ public class Tower extends PIDSubsystem {
         }
         sb.append("\n");
         System.out.println(sb.toString());
-        return min;
+        return min / 2000;
     }
 
     @Override
