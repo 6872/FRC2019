@@ -175,7 +175,7 @@ public class I2CUpdatableAddress {
         buffer[0] = (byte) registerAddress;
         buffer[1] = (byte) data;
         boolean aborted = I2CJNI.i2CWriteB(m_port, (byte) m_deviceAddress, buffer,
-                (byte) buffer.length) < 0;
+            (byte) buffer.length) < 0;
         if (aborted) {
             throw new NACKException();
         }
