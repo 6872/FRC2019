@@ -38,6 +38,13 @@ public class LoadDisk extends InstantCommand {
     // Called once when this command runs
     @Override
     protected void initialize() {
+        Robot.tower.isDiskLoaded = !Robot.tower.isDiskLoaded;
+        if (Robot.tower.isDiskLoaded) {
+            Robot.tower.setSetpointRelative(70);
+        }
+        else {
+            Robot.tower.setSetpointRelative(-70);
+        }
     }
 
 }
