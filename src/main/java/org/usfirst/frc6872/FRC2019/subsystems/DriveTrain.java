@@ -51,7 +51,7 @@ public class DriveTrain extends Subsystem {
         addChild("Front Left",frontLeft);
         frontLeft.setInverted(false);
         
-        rearLeft = new VictorSP(2);
+        rearLeft = new VictorSP(1);
         addChild("Rear Left",rearLeft);
         rearLeft.setInverted(false);
         
@@ -59,7 +59,7 @@ public class DriveTrain extends Subsystem {
         addChild("Left",left);
         
         
-        frontRight = new VictorSP(1);
+        frontRight = new VictorSP(2);
         addChild("Front Right",frontRight);
         frontRight.setInverted(false);
         

@@ -29,7 +29,7 @@ public class SetLevelOrLiftRear extends ConditionalCommand {
     }
 
     public SetLevelOrLiftRear(double setpoint) {
-        super(new SetLevel(setpoint), new ToggleFrontLift());
+        super(new SetLevel(setpoint), new ToggleRearLift());
     }
 
     @Override
