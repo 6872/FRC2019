@@ -11,7 +11,11 @@
 
 package org.usfirst.frc6872.FRC2019.commands;
 import edu.wpi.first.wpilibj.command.InstantCommand;
+
+import java.util.ArrayList;
+
 import org.usfirst.frc6872.FRC2019.Robot;
+import org.usfirst.frc6872.FRC2019.subsystems.Tower;
 
 /**
  *
@@ -38,13 +42,18 @@ public class LoadDisk extends InstantCommand {
     // Called once when this command runs
     @Override
     protected void initialize() {
-        Robot.tower.isDiskLoaded = !Robot.tower.isDiskLoaded;
-        if (Robot.tower.isDiskLoaded) {
-            Robot.tower.setSetpointRelative(70);
-        }
-        else {
-            Robot.tower.setSetpointRelative(-70);
+        final double setpoint = Robot.tower.getSetpoint();
+        if (setpoint == Tower.DiskLoad
+                || setpoint == Tower.Disk1
+                || setpoint == Tower.Disk2
+                || setpoint == Tower.Disk3) {
+            Robot.tower.isDiskLoaded = !Robot.tower.isDiskLoaded;
+            if (Robot.tower.isDiskLoaded) {
+                Robot.tower.setSetpointRelative(70);
+            }
+            else {
+                Robot.tower.setSetpointRelative(-70);
+            }
         }
     }
-
 }

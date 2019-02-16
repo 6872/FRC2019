@@ -156,7 +156,6 @@ public class Tower extends PIDSubsystem {
         if (height > 10)
             averageHeight = averageHeight * (1 - smooth) + height * smooth;
         SmartDashboard.putNumber("Distance Sensor", averageHeight);
-        SmartDashboard.putNumber("Test", transmitter.getRangeMM());
         receiver.ping();
         transmitter.ping();
     }

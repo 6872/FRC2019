@@ -12,6 +12,7 @@
 package org.usfirst.frc6872.FRC2019.commands;
 import edu.wpi.first.wpilibj.command.InstantCommand;
 import org.usfirst.frc6872.FRC2019.Robot;
+import org.usfirst.frc6872.FRC2019.subsystems.Tower;
 
 /**
  *
@@ -38,7 +39,12 @@ public class TogglePiston extends InstantCommand {
     // Called once when this command runs
     @Override
     protected void initialize() {
-        Robot.tower.setPiston(!Robot.tower.getPistonState());
+        if (Robot.tower.getPistonState() == false)
+            Robot.tower.setPiston(true);
+        else if (Robot.tower.getSetpoint() == Tower.Robot)
+            Robot.tower.setPiston(false);
+        else
+            System.out.println("Wrong position!");
     }
 
 }
