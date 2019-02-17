@@ -72,7 +72,7 @@ public class Tower extends PIDSubsystem {
     }
 
     public void moveManually(double speed) {
-        disable();
+        disable(); 
         winch.setSpeed(speed);
     }
 
