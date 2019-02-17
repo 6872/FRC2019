@@ -49,10 +49,10 @@ public class LoadDisk extends InstantCommand {
                 || setpoint == Tower.Disk3) {
             Robot.tower.isDiskLoaded = !Robot.tower.isDiskLoaded;
             if (Robot.tower.isDiskLoaded) {
-                Robot.tower.setSetpointRelative(70);
+                Robot.tower.setSetpointRelative(90);
             }
             else {
-                Robot.tower.setSetpointRelative(-70);
+                Robot.tower.setSetpointRelative(-90);
             }
         }
     }
