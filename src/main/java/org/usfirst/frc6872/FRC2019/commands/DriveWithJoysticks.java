@@ -45,7 +45,7 @@ public class DriveWithJoysticks extends Command {
     protected void execute() {
         var joy = Robot.oi.joystick;
         double multiplier = (-joy.getThrottle() + 1) / 2;
-        double y = joy.getY() * multiplier;
+        double y = -joy.getY() * multiplier;
         double x = joy.getX();
         Robot.driveTrain.drive(y, x);
     }
