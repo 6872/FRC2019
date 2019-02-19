@@ -103,10 +103,11 @@ public class OI {
         SmartDashboard.putData("Drive With Joysticks", new DriveWithJoysticks());
         SmartDashboard.putData("Control Intake", new ControlIntake());
         SmartDashboard.putData("Control Winch", new ControlWinch());
+        SmartDashboard.putData("Charge Pneumatics", new ChargePneumatics());
+        SmartDashboard.putData("Initialize Tower", new InitializeTower());
         SmartDashboard.putData("Set Piston: Extend Piston", new SetPiston(true));
         SmartDashboard.putData("Set Piston: Retract Piston", new SetPiston(false));
         SmartDashboard.putData("Toggle Piston", new TogglePiston());
-        SmartDashboard.putData("Set Level: Ground", new SetLevel(0.5));
         SmartDashboard.putData("Load Disk", new LoadDisk());
         SmartDashboard.putData("Toggle Front Lift", new ToggleFrontLift());
         SmartDashboard.putData("Toggle Rear Lift", new ToggleRearLift());
