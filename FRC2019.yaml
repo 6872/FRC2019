@@ -270,7 +270,7 @@ Children:
         validators: null
         value:
         - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: Ground,
-          type: double, value: '50'}
+          type: double, value: '100'}
         - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: Robot, type: double,
           value: '400'}
         - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: BallLoad,
@@ -282,7 +282,7 @@ Children:
         - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: Ball3, type: double,
           value: '1800'}
         - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: DiskLoad,
-          type: double, value: '250'}
+          type: double, value: '210'}
         - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: Disk1, type: double,
           value: '300'}
         - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: Disk2, type: double,
@@ -659,7 +659,7 @@ Children:
           validators: null
           value: whenPressed
       Base: Joystick Button
-      Name: Disable PID Button 2
+      Name: Disable PID Button
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -946,7 +946,7 @@ Children:
           validators: null
           value: whenPressed
       Base: Joystick Button
-      Name: Disable PID Button
+      Name: Disable PID Button 2
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
         choices: *id021
@@ -1264,7 +1264,7 @@ Children:
         name: Commands
         validators: [List]
         value:
-        - &id026 !!robotbuilder.data.CommandGroupEntry
+        - &id028 !!robotbuilder.data.CommandGroupEntry
           command:
             base:
               help: A command specifies an action that the robot can perform.
@@ -1300,8 +1300,8 @@ Children:
             validators: null
             value: []
           previous: null
-        - &id028 !!robotbuilder.data.CommandGroupEntry
-          command: &id033
+        - &id031 !!robotbuilder.data.CommandGroupEntry
+          command: &id036
             base:
               help: A command that moves a PID subsystem to a predetermined setpoint.
               name: Setpoint Command
@@ -1310,7 +1310,7 @@ Children:
                 componentName: PID Subsystem
                 default: None
                 name: Requires
-                validators: [TypeDropdownSelected]
+                validators: &id027 [TypeDropdownSelected]
                 value: None
               - !!robotbuilder.data.properties.BooleanProperty {default: true, name: Button on SmartDashboard,
                 validators: null, value: true}
@@ -1319,7 +1319,7 @@ Children:
                 name: Parameters
                 validators: null
                 value:
-                - !!robotbuilder.data.properties.ParameterDescriptor {name: setpoint,
+                - &id026 !!robotbuilder.data.properties.ParameterDescriptor {name: setpoint,
                   type: double}
               - !!robotbuilder.data.properties.ParameterSetProperty
                 default: &id025 []
@@ -1331,13 +1331,12 @@ Children:
               supports: {}
               type: Command
             name: Set Level
-            properties: &id037
+            properties: &id040
               Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {
                 default: false, name: Autonomous Selection, validators: null, value: false}
               Parameters: !!robotbuilder.data.properties.ParametersProperty
                 default:
-                - !!robotbuilder.data.properties.ParameterDescriptor {name: setpoint,
-                  type: double}
+                - *id026
                 name: Parameters
                 validators: null
                 value:
@@ -1347,7 +1346,7 @@ Children:
                 componentName: PID Subsystem
                 default: None
                 name: Requires
-                validators: [TypeDropdownSelected]
+                validators: *id027
                 value: Tower
               Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
                 default: []
@@ -1365,9 +1364,9 @@ Children:
             value:
             - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: setpoint,
               type: double, value: Tower.Robot}
-          previous: *id026
-        - &id030 !!robotbuilder.data.CommandGroupEntry
-          command: &id031
+          previous: *id028
+        - &id033 !!robotbuilder.data.CommandGroupEntry
+          command: &id034
             base:
               help: A command specifies an action that the robot can perform and finishes after a timeout.
               name: Timed Command
@@ -1381,13 +1380,13 @@ Children:
                 name: Parameters
                 validators: null
                 value:
-                - !!robotbuilder.data.properties.ParameterDescriptor {name: timeout,
+                - &id030 !!robotbuilder.data.properties.ParameterDescriptor {name: timeout,
                   type: double}
               - !!robotbuilder.data.properties.ParameterSetProperty
-                default: &id027 []
+                default: &id029 []
                 name: Parameter presets
                 validators: null
-                value: *id027
+                value: *id029
               - !!robotbuilder.data.properties.BooleanProperty {default: false, name: Run When Disabled,
                 validators: null, value: false}
               - !!robotbuilder.data.properties.BooleanProperty {default: false, name: Autonomous Selection,
@@ -1395,13 +1394,12 @@ Children:
               supports: {}
               type: Command
             name: Wait
-            properties: &id035
+            properties: &id038
               Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {
                 default: false, name: Autonomous Selection, validators: null, value: false}
               Parameters: !!robotbuilder.data.properties.ParametersProperty
                 default:
-                - !!robotbuilder.data.properties.ParameterDescriptor {name: timeout,
-                  type: double}
+                - *id030
                 name: Parameters
                 validators: null
                 value:
@@ -1427,8 +1425,8 @@ Children:
             value:
             - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: timeout,
               type: double, value: '1'}
-          previous: *id028
-        - &id032 !!robotbuilder.data.CommandGroupEntry
+          previous: *id031
+        - &id035 !!robotbuilder.data.CommandGroupEntry
           command:
             base:
               help: A command specifies an action that the robot can perform and finishes instantly.
@@ -1444,10 +1442,10 @@ Children:
                 validators: null
                 value: []
               - !!robotbuilder.data.properties.ParameterSetProperty
-                default: &id029 []
+                default: &id032 []
                 name: Parameter presets
                 validators: null
-                value: *id029
+                value: *id032
               - !!robotbuilder.data.properties.BooleanProperty {default: false, name: Run When Disabled,
                 validators: null, value: false}
               - !!robotbuilder.data.properties.BooleanProperty {default: false, name: Autonomous Selection,
@@ -1455,7 +1453,7 @@ Children:
               supports: {}
               type: Command
             name: Set Piston
-            properties: &id036
+            properties: &id039
               Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {
                 default: false, name: Autonomous Selection, validators: null, value: false}
               Parameters: !!robotbuilder.data.properties.ParametersProperty
@@ -1493,9 +1491,9 @@ Children:
             value:
             - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: open,
               type: boolean, value: 'false'}
-          previous: *id030
-        - &id034 !!robotbuilder.data.CommandGroupEntry
-          command: *id031
+          previous: *id033
+        - &id037 !!robotbuilder.data.CommandGroupEntry
+          command: *id034
           hasMatch: true
           order: Sequential
           parameters:
@@ -1505,9 +1503,9 @@ Children:
             value:
             - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: timeout,
               type: double, value: '2'}
-          previous: *id032
+          previous: *id035
         - !!robotbuilder.data.CommandGroupEntry
-          command: *id033
+          command: *id036
           hasMatch: true
           order: Sequential
           parameters:
@@ -1517,13 +1515,13 @@ Children:
             value:
             - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: setpoint,
               type: double, value: Tower.Ground}
-          previous: *id034
+          previous: *id037
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command Group
     Name: Initialize Tower
   - Children: []
-    Properties: *id035
+    Properties: *id038
     Base: Timed Command
     Name: Wait
   - Children: []
@@ -1549,7 +1547,7 @@ Children:
     Base: Instant Command
     Name: Disable Tower PID
   - Children: []
-    Properties: *id036
+    Properties: *id039
     Base: Instant Command
     Name: Set Piston
   - Children: []
@@ -1575,7 +1573,7 @@ Children:
     Base: Instant Command
     Name: Toggle Piston
   - Children: []
-    Properties: *id037
+    Properties: *id040
     Base: Setpoint Command
     Name: Set Level
   - Children: []
