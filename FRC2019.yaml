@@ -270,7 +270,7 @@ Children:
         validators: null
         value:
         - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: Ground,
-          type: double, value: '50'}
+          type: double, value: '100'}
         - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: Robot, type: double,
           value: '400'}
         - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: BallLoad,
@@ -282,7 +282,7 @@ Children:
         - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: Ball3, type: double,
           value: '1800'}
         - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: DiskLoad,
-          type: double, value: '250'}
+          type: double, value: '210'}
         - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: Disk1, type: double,
           value: '300'}
         - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: Disk2, type: double,
@@ -659,7 +659,7 @@ Children:
           validators: null
           value: whenPressed
       Base: Joystick Button
-      Name: Disable PID Button 2
+      Name: Disable PID Button
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -946,7 +946,7 @@ Children:
           validators: null
           value: whenPressed
       Base: Joystick Button
-      Name: Disable PID Button
+      Name: Disable PID Button 2
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
         choices: *id021
@@ -1393,7 +1393,7 @@ Children:
               supports: {}
               type: Command
             name: Set Level
-            properties: &id041
+            properties: &id040
               Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {
                 default: false, name: Autonomous Selection, validators: null, value: false}
               Parameters: !!robotbuilder.data.properties.ParametersProperty
@@ -1515,7 +1515,7 @@ Children:
               supports: {}
               type: Command
             name: Set Piston
-            properties: &id040
+            properties: &id039
               Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {
                 default: false, name: Autonomous Selection, validators: null, value: false}
               Parameters: !!robotbuilder.data.properties.ParametersProperty
@@ -1600,16 +1600,16 @@ Children:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: None}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: &id039 []
+        default: []
         name: Parameter presets
         validators: null
-        value: *id039
+        value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Instant Command
     Name: Disable Tower PID
   - Children: []
-    Properties: *id040
+    Properties: *id039
     Base: Instant Command
     Name: Set Piston
   - Children: []
@@ -1635,7 +1635,7 @@ Children:
     Base: Instant Command
     Name: Toggle Piston
   - Children: []
-    Properties: *id041
+    Properties: *id040
     Base: Setpoint Command
     Name: Set Level
   - Children: []
@@ -1719,10 +1719,10 @@ Children:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: Intake}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: &id042 []
+        default: []
         name: Parameter presets
         validators: null
-        value: *id042
+        value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command

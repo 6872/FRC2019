@@ -11,6 +11,8 @@
 
 package org.usfirst.frc6872.FRC2019.commands;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import org.usfirst.frc6872.FRC2019.Robot;
 
 /**
@@ -43,16 +45,10 @@ public class DriveWithJoysticks extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        // var joy = Robot.oi.joystick;
-        // double multiplier = (-joy.getThrottle() + 1) / 2;
-        // double y = -joy.getY() * multiplier;
-        // double x = joy.getX();
-        // Robot.driveTrain.drive(y, x);
-        
         var joy = Robot.oi.gamepad2;
-        double multiplier = 0.75;
-        double y = -joy.getY() * multiplier;
-        double x = joy.getX();
+        double multiplier = 1;
+        double y = -joy.getY() * multiplier * SmartDashboard.getNumber("Drive Speed Factor", 0.75);
+        double x = joy.getX() * SmartDashboard.getNumber("Turn Factor", 1);
         Robot.driveTrain.drive(y, x);
     }
 
