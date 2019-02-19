@@ -58,8 +58,8 @@ public class Tower extends PIDSubsystem {
 
     private double averageHeight = 0;
     private double smooth = 0.1;
-    private long counter = 0;
     private boolean isPistonExtended = false;
+    private boolean enabled = false;
 
     public void setPiston(boolean extended) {
         solenoid.set(extended ? Value.kForward : Value.kReverse);
@@ -79,6 +79,22 @@ public class Tower extends PIDSubsystem {
     public void stopMotor() {
         disable();
         winch.stopMotor();
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    @Override
+    public void disable() {
+        enabled = false;
+        super.disable();
+    }
+
+    @Override
+    public void enable() {
+        enabled = true;
+        super.enable();
     }
 
     // Initialize your subsystem here
@@ -164,7 +180,6 @@ public class Tower extends PIDSubsystem {
 
     @Override
     public void periodic() {
-        counter++;
         double height = receiver.getRangeMM() * 2;
         if (height > 10)
             averageHeight = averageHeight * (1 - smooth) + height * smooth;
