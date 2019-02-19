@@ -45,6 +45,10 @@ public class SetIntake extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
+        if (m_push)
+            Robot.intake.propel();
+        else
+            Robot.intake.suck();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -56,11 +60,13 @@ public class SetIntake extends Command {
     // Called once after isFinished returns true
     @Override
     protected void end() {
+        Robot.intake.stopMotor();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     @Override
     protected void interrupted() {
+        Robot.intake.stopMotor();
     }
 }

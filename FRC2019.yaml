@@ -389,7 +389,7 @@ Children:
         validators: null
         value: []
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Default Command, type: Command, validators: null, value: Control Intake}
+        name: Default Command, type: Command, validators: null, value: None}
       Constants: !!robotbuilder.data.properties.ConstantsProperty
         default: []
         name: Constants
@@ -994,28 +994,6 @@ Children:
       Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {default: false,
         name: Run When Disabled, validators: null, value: false}
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Requires, type: Subsystem, validators: null, value: Intake}
-      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: []
-        name: Parameter presets
-        validators: null
-        value: []
-      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: false}
-    Base: Command
-    Name: Control Intake
-  - Children: []
-    Properties:
-      Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {default: false,
-        name: Autonomous Selection, validators: null, value: false}
-      Parameters: !!robotbuilder.data.properties.ParametersProperty
-        default: []
-        name: Parameters
-        validators: null
-        value: []
-      Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {default: false,
-        name: Run When Disabled, validators: null, value: false}
-      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: None}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
         default: []
@@ -1136,7 +1114,7 @@ Children:
               supports: {}
               type: Command
             name: Set Level
-            properties: &id040
+            properties: &id041
               Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {
                 default: false, name: Autonomous Selection, validators: null, value: false}
               Parameters: !!robotbuilder.data.properties.ParametersProperty
@@ -1258,7 +1236,7 @@ Children:
               supports: {}
               type: Command
             name: Set Piston
-            properties: &id039
+            properties: &id040
               Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {
                 default: false, name: Autonomous Selection, validators: null, value: false}
               Parameters: !!robotbuilder.data.properties.ParametersProperty
@@ -1326,6 +1304,10 @@ Children:
     Base: Command Group
     Name: Initialize Tower
   - Children: []
+    Properties: *id038
+    Base: Timed Command
+    Name: Wait
+  - Children: []
     Properties:
       Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {default: false,
         name: Autonomous Selection, validators: null, value: false}
@@ -1337,22 +1319,18 @@ Children:
       Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {default: false,
         name: Run When Disabled, validators: null, value: true}
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Requires, type: Subsystem, validators: null, value: Tower}
+        name: Requires, type: Subsystem, validators: null, value: None}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: []
+        default: &id039 []
         name: Parameter presets
         validators: null
-        value: []
+        value: *id039
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
-    Base: Command
+    Base: Instant Command
     Name: Disable Tower PID
   - Children: []
-    Properties: *id038
-    Base: Timed Command
-    Name: Wait
-  - Children: []
-    Properties: *id039
+    Properties: *id040
     Base: Instant Command
     Name: Set Piston
   - Children: []
@@ -1378,7 +1356,7 @@ Children:
     Base: Instant Command
     Name: Toggle Piston
   - Children: []
-    Properties: *id040
+    Properties: *id041
     Base: Setpoint Command
     Name: Set Level
   - Children: []
@@ -1462,10 +1440,10 @@ Children:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: Intake}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: &id041 []
+        default: &id042 []
         name: Parameter presets
         validators: null
-        value: *id041
+        value: *id042
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
