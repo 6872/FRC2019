@@ -86,15 +86,15 @@ public class OI {
         gamepad2 = new Joystick(2);
         
         togglePistonButton = new JoystickButton(gamepad2, 1);
-        togglePistonButton.whileHeld(new TogglePiston());
+        togglePistonButton.whenPressed(new TogglePiston());
         intakePushButton2 = new JoystickButton(gamepad2, 3);
-        intakePushButton2.whenPressed(new SetIntake(true));
+        intakePushButton2.whileHeld(new SetIntake(true));
         intakePullButton2 = new JoystickButton(gamepad2, 2);
-        intakePullButton2.whenPressed(new SetIntake(false));
+        intakePullButton2.whileHeld(new SetIntake(false));
         loadDiskButton2 = new JoystickButton(gamepad2, 4);
         loadDiskButton2.whenPressed(new LoadDisk());
         disablePIDButton3 = new JoystickButton(gamepad2, 9);
-        disablePIDButton3.whileHeld(new DisableTowerPID());
+        disablePIDButton3.whenPressed(new DisableTowerPID());
         rearLiftButton2 = new JoystickButton(gamepad2, 6);
         rearLiftButton2.whenPressed(new ToggleRearLift());
         frontLiftButton2 = new JoystickButton(gamepad2, 5);
