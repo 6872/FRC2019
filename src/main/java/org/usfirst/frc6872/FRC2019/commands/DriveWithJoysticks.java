@@ -48,7 +48,7 @@ public class DriveWithJoysticks extends Command {
         var joy = Robot.oi.gamepad2;
         double multiplier = 1;
         double y = -joy.getY() * multiplier * SmartDashboard.getNumber("Drive Speed Factor", 0.75);
-        double x = joy.getX() * SmartDashboard.getNumber("Turn Factor", 1);
+        double x = joy.getX() * SmartDashboard.getNumber("Turn Factor", 0.75);
         Robot.driveTrain.drive(y, x);
     }
 
