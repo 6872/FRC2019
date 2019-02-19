@@ -43,8 +43,14 @@ public class DriveWithJoysticks extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        var joy = Robot.oi.joystick;
-        double multiplier = (-joy.getThrottle() + 1) / 2;
+        // var joy = Robot.oi.joystick;
+        // double multiplier = (-joy.getThrottle() + 1) / 2;
+        // double y = -joy.getY() * multiplier;
+        // double x = joy.getX();
+        // Robot.driveTrain.drive(y, x);
+        
+        var joy = Robot.oi.gamepad2;
+        double multiplier = 0.75;
         double y = -joy.getY() * multiplier;
         double x = joy.getX();
         Robot.driveTrain.drive(y, x);
