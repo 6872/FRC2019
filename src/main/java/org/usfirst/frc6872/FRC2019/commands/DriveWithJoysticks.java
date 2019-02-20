@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc6872.FRC2019.Robot;
+import org.usfirst.frc6872.FRC2019.subsystems.Tower;
 
 /**
  *
@@ -48,8 +49,31 @@ public class DriveWithJoysticks extends Command {
         var joy = Robot.oi.joystick;
         double multiplier = (-joy.getThrottle() + 1) / 2;
         double y = -joy.getY() * multiplier * SmartDashboard.getNumber("Drive Speed Factor", 1);
-        double x = joy.getX() * SmartDashboard.getNumber("Turn Factor", 0.75);
+        double x = joy.getX() * SmartDashboard.getNumber("Turn Factor", 0.5);
         Robot.driveTrain.drive(y, x);
+        
+        if (Robot.tower.isEnabled()) {
+            int pov = Robot.oi.gamepad.getPOV();
+            
+            switch (pov) {
+                case 0: // up
+                    new SetLevel(Tower.Disk3);
+                    break;
+                case 90: // right
+                new SetLevel(Tower.Disk2);
+                    break;
+                case 180: // down
+                new SetLevel(Tower.Disk1);
+                    break;                    
+                case 270: // left
+                new SetLevel(Tower.DiskLoad);
+                    break;
+            }
+        }
+        else {
+            double speed = -Robot.oi.gamepad.getRawAxis(5);
+            Robot.tower.moveManually(speed);
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -61,11 +85,13 @@ public class DriveWithJoysticks extends Command {
     // Called once after isFinished returns true
     @Override
     protected void end() {
+        Robot.tower.stopMotor();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     @Override
     protected void interrupted() {
+        Robot.tower.stopMotor();
     }
 }
