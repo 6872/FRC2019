@@ -179,7 +179,7 @@ Children:
           validators: *id003
           value: '6'
         Inverted: !!robotbuilder.data.properties.BooleanProperty {default: false,
-          name: Inverted, validators: null, value: true}
+          name: Inverted, validators: null, value: false}
       Base: Speed Controller
       Name: Winch
     - Children: []

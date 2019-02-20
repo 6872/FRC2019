@@ -53,7 +53,7 @@ public class DriveWithJoysticks extends Command {
         Robot.driveTrain.drive(y, x);
         
         if (Robot.tower.isEnabled()) {
-            int pov = Robot.oi.gamepad.getPOV();
+            int pov = Robot.oi.gamepad2.getPOV();
             
             switch (pov) {
                 case 0: // up
@@ -71,7 +71,7 @@ public class DriveWithJoysticks extends Command {
             }
         }
         else {
-            double speed = -Robot.oi.gamepad.getRawAxis(5);
+            double speed = Robot.oi.gamepad2.getRawAxis(5);
             Robot.tower.moveManually(speed);
         }
     }

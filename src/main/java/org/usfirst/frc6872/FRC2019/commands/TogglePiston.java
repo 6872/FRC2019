@@ -39,12 +39,7 @@ public class TogglePiston extends InstantCommand {
     // Called once when this command runs
     @Override
     protected void initialize() {
-        if (Robot.tower.getPistonState() == false)
-            Robot.tower.setPiston(true);
-        else if (Robot.tower.getSetpoint() == Tower.Robot)
-            Robot.tower.setPiston(false);
-        else
-            System.out.println("Wrong position!");
+        Robot.tower.setPiston(!Robot.tower.getPistonState());
     }
 
 }
