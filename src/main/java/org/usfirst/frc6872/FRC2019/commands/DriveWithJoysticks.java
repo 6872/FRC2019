@@ -46,14 +46,14 @@ public class DriveWithJoysticks extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        var joy = Robot.oi.joystick;
-        double multiplier = (-joy.getThrottle() + 1) / 2;
-        double y = -joy.getY() * multiplier * SmartDashboard.getNumber("Drive Speed Factor", 1);
+        var joy = Robot.oi.gamepad2;
+        double multiplier = 1;
+        double y = -joy.getY() * multiplier * SmartDashboard.getNumber("Drive Speed Factor", 0.75);
         double x = joy.getX() * SmartDashboard.getNumber("Turn Factor", 0.5);
         Robot.driveTrain.drive(y, x);
         
         if (Robot.tower.isEnabled()) {
-            int pov = Robot.oi.gamepad.getPOV();
+            int pov = Robot.oi.gamepad2.getPOV();
             
             switch (pov) {
                 case 0: // up
@@ -71,7 +71,7 @@ public class DriveWithJoysticks extends Command {
             }
         }
         else {
-            double speed = -Robot.oi.gamepad.getRawAxis(5);
+            double speed = Robot.oi.gamepad2.getRawAxis(5);
             Robot.tower.moveManually(speed);
         }
     }

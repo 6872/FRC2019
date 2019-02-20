@@ -43,8 +43,31 @@ public class ControlWinch extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
+        // if (Robot.tower.isEnabled()) {
+        //     int pov = Robot.oi.gamepad.getPOV();
+            
+        //     switch (pov) {
+        //         case 0: // up
+        //             Robot.tower.setSetpoint(Tower.Disk3);
+        //             break;
+        //         case 90: // right
+        //             Robot.tower.setSetpoint(Tower.Disk2);
+        //             break;
+        //         case 180: // down
+        //             Robot.tower.setSetpoint(Tower.Disk1);
+        //             break;                    
+        //         case 270: // left
+        //             Robot.tower.setSetpoint(Tower.DiskLoad);
+        //             break;
+        //     }
+        // }
+        // else {
+        //     double speed = -Robot.oi.gamepad.getRawAxis(5);
+        //     Robot.tower.moveManually(speed);
+        // }
+        
         if (Robot.tower.isEnabled()) {
-            int pov = Robot.oi.gamepad.getPOV();
+            int pov = Robot.oi.gamepad2.getPOV();
             
             switch (pov) {
                 case 0: // up
@@ -57,12 +80,12 @@ public class ControlWinch extends Command {
                     Robot.tower.setSetpoint(Tower.Disk1);
                     break;                    
                 case 270: // left
-                    Robot.tower.setSetpoint(Tower.DiskLoad);
+                    Robot.tower.setSetpoint(Tower.Ground);
                     break;
             }
         }
         else {
-            double speed = -Robot.oi.gamepad.getRawAxis(5);
+            double speed = -Robot.oi.gamepad2.getRawAxis(5);
             Robot.tower.moveManually(speed);
         }
     }
