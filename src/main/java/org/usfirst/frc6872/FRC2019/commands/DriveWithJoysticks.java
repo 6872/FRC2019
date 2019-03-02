@@ -48,32 +48,13 @@ public class DriveWithJoysticks extends Command {
     protected void execute() {
         var joy = Robot.oi.gamepad2;
         double multiplier = 1;
-        double y = -joy.getY() * multiplier * SmartDashboard.getNumber("Drive Speed Factor", 0.75);
+        double y = -joy.getY() * multiplier * SmartDashboard.getNumber("Drive Speed Factor", 0.5);
         double x = joy.getX() * SmartDashboard.getNumber("Turn Factor", 0.5);
         Robot.driveTrain.drive(y, x);
         
-        if (Robot.tower.isEnabled()) {
-            int pov = Robot.oi.gamepad2.getPOV();
-            
-            switch (pov) {
-                case 0: // up
-                    new SetLevel(Tower.Disk3);
-                    break;
-                case 90: // right
-                new SetLevel(Tower.Disk2);
-                    break;
-                case 180: // down
-                new SetLevel(Tower.Disk1);
-                    break;                    
-                case 270: // left
-                new SetLevel(Tower.DiskLoad);
-                    break;
-            }
-        }
-        else {
-            double speed = Robot.oi.gamepad2.getRawAxis(5);
-            Robot.tower.moveManually(speed);
-        }
+        
+        double speed = Robot.oi.gamepad2.getRawAxis(5);
+        Robot.tower.moveManually(speed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
